@@ -1,6 +1,11 @@
 package main;
 
 import model.DataBase;
+import model.FirebirdClass;
+import model.IBanco;
+import model.OracleClass;
+import model.PostGreSQLClass;
+import model.SQLServerClass;
 
 public class SqlClientesMaisRecentes {
 
@@ -8,7 +13,14 @@ public class SqlClientesMaisRecentes {
 
 	public static void main(String[] args) {
 		TipoBanco = DataBase.PostgreSQL;
-		System.out.println(SqlClientesMaisRecentes());
+		
+		System.out.println("Impressão sem factory" + SqlClientesMaisRecentes());
+		
+		System.out.println();
+		TipoBanco = DataBase.SqlServer;
+		
+		IBanco banco =  GetDataBaseClass(TipoBanco);
+		System.out.println("Impressão com factory" + banco.GetSQLClientesMaisRecentes());		
 	}
 
 	// antes de implementar o conceito de Factory 
@@ -28,4 +40,23 @@ public class SqlClientesMaisRecentes {
 			return "";
 		}	
 	}
+	
+	public static IBanco GetDataBaseClass(DataBase tipoBanco) {
+		switch (tipoBanco) {
+		case  SqlServer:
+			return new SQLServerClass();
+
+		case Firebird:
+			return new FirebirdClass();
+			
+		case Oracle:
+			return new OracleClass();
+			
+		case PostgreSQL:
+			return new  PostGreSQLClass();
+
+		default:
+			return null;
+		}		
+	}	
 }
