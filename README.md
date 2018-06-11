@@ -10,3 +10,6 @@ Design Pattern criacional que faz exatamente o que o próprio nome já diz: é u
 
 ## Singleton
  Este padrão garante a existência de apenas uma instância de uma classe, mantendo um ponto global de acesso ao seu objeto. 
+ 
+## Referência
+https://www.db1.com.br/ciclo-de-capacitacao/capacitacao-design-patterns.html?utm_campaign=ciclo_de_capacitacao_-_design_patterns&utm_medium=email&utm_source=RD+Station#video2
